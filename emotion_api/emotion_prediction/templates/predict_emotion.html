@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Prediction</title>
+</head>
+<body>
+    <h2>EmoInSync - 6 Human Emotions Recognizer✨</h2>
+    
+    <form method="post" action="{% url 'predict_emotion' %}">
+        {% csrf_token %}
+        <label for="input_text">Your text here:</label>
+        <textarea name="input_text" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if predicted_emotion %}
+        <p>Predicted emotion: {{ predicted_emotion }}</p>
+        <img src="data:image/gif;base64,{{ gif_data }}" alt="Predicted Emotion Gif">
+    {% endif %}
+</body>
+</html>
